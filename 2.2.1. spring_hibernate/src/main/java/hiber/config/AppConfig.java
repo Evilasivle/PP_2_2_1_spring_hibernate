@@ -32,7 +32,6 @@ public class AppConfig {
       DriverManagerDataSource dataSource = new DriverManagerDataSource();
       dataSource.setDriverClassName(Objects.requireNonNull(env.getProperty("db.driver")));
       dataSource.setUrl(env.getProperty("db.url"));
-//      dataSource.setSchema(env.getProperty("db.schema"));
       dataSource.setUsername(env.getProperty("db.username"));
       dataSource.setPassword(env.getProperty("db.password"));
 
@@ -44,7 +43,6 @@ public class AppConfig {
       LocalSessionFactoryBean factoryBean = new LocalSessionFactoryBean();
       factoryBean.setDataSource(getDataSource());
       Properties props=new Properties();
-//      props.put("hibernate.dialect", env.getProperty("hibernate.dialect"));
       props.put("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
       props.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
 

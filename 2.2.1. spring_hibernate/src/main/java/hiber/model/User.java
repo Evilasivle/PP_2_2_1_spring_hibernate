@@ -94,7 +94,7 @@ public class User {
               ", firstName='" + firstName + '\'' +
               ", lastName='" + lastName + '\'' +
               ", email='" + email + '\'' +
-              ", car=" + car +
+              ", car=" + car.getModel() +
               '}';
    }
 }
