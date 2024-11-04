@@ -7,8 +7,9 @@ import java.util.List;
 
 public interface UserDao {
    void add(User user);
-   void add(Car car);
-   List<User> listUsers();
-   List<Car> listCars();
+
+   @SuppressWarnings("unchecked")
    User getUserWithModelAndSeries(String model, int series);
+
+   List<User> listUsers();
 }

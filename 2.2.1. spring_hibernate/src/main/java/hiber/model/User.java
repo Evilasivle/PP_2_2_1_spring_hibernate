@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 import javax.persistence.*;
 import java.util.Objects;
 
-@Component
 @Entity
 @Table(name = "User")
 public class User {
@@ -23,7 +22,7 @@ public class User {
    @Column(name = "email")
    private String email;
 
-   @OneToOne(mappedBy = "user")
+   @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
    private Car car;
 
    public User() {}
@@ -70,8 +69,9 @@ public class User {
       return car;
    }
 
-   public void setCar(Car car) {
+   public Car setCar(Car car) {
       this.car = car;
+      return car;
    }
 
    @Override
@@ -94,7 +94,7 @@ public class User {
               ", firstName='" + firstName + '\'' +
               ", lastName='" + lastName + '\'' +
               ", email='" + email + '\'' +
-              ", car=" + car.getModel() +
+//              ", car=" + car.getModel() +
               '}';
    }
 }
