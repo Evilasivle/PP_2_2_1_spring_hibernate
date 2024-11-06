@@ -11,18 +11,21 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 @Repository
 public class UserDaoImp implements UserDao {
-
-    SessionFactory sessionFactory;
-
-   @Override
-   public void add(User user) {
-      sessionFactory.getCurrentSession().save(user);
-   }
-
+    private SessionFactory sessionFactory;
 
    public User getUserFromTable(User user) {
       return sessionFactory.getCurrentSession().get(User.class, user.getId());
    }
+
+    @Autowired
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+
+    @Override
+    public void add(User user) {
+        sessionFactory.getCurrentSession().save(user);
+    }
 
    @Override
    @SuppressWarnings("unchecked")
@@ -41,14 +44,4 @@ public class UserDaoImp implements UserDao {
       Query query = sessionFactory.getCurrentSession().createQuery("from User");
       return query.getResultList();
    }
-
-    public SessionFactory getSessionFactory() {
-        return sessionFactory;
-    }
-
-    @Autowired
-    public void setSessionFactory(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
-
 }

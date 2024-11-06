@@ -23,7 +23,7 @@ import java.util.Properties;
 @EnableTransactionManagement
 @ComponentScan(value = "hiber")
 public class AppConfig {
-//   @Autowired
+
    private Environment env;
 
    @Bean
