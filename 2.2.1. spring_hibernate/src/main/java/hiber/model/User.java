@@ -8,6 +8,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "User")
+@Component
 public class User {
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -69,6 +70,7 @@ public class User {
       return car;
    }
 
+   @Autowired
    public Car setCar(Car car) {
       this.car = car;
       return car;

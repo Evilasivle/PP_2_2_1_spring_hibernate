@@ -24,7 +24,6 @@ import java.util.Properties;
 @ComponentScan(value = "hiber")
 public class AppConfig {
 
-   @Autowired
    private Environment env;
 
    @Bean

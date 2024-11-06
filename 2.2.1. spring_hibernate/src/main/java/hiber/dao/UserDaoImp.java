@@ -12,8 +12,7 @@ import java.util.List;
 @Repository
 public class UserDaoImp implements UserDao {
 
-   @Autowired
-   SessionFactory sessionFactory;
+    SessionFactory sessionFactory;
 
    @Override
    public void add(User user) {
@@ -21,21 +20,19 @@ public class UserDaoImp implements UserDao {
    }
 
 
-   public User getUsersFromTable(User user) {
+   public User getUserFromTable(User user) {
       return sessionFactory.getCurrentSession().get(User.class, user.getId());
    }
 
    @Override
    @SuppressWarnings("unchecked")
    public User getUserWithModelAndSeries(String model, int series) {
-      User user = null;
       String hql = "SELECT c.user FROM Car c WHERE c.model = :model AND c.series = :series";
       Query<User> query = sessionFactory.getCurrentSession().createQuery(hql, User.class);
       query.setParameter("model", model);
       query.setParameter("series", series);
       List<User> userList = query.getResultList();
       return userList.get(0);
-
    }
 
    @Override
@@ -45,6 +42,13 @@ public class UserDaoImp implements UserDao {
       return query.getResultList();
    }
 
+    public SessionFactory getSessionFactory() {
+        return sessionFactory;
+    }
 
+    @Autowired
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
 }
