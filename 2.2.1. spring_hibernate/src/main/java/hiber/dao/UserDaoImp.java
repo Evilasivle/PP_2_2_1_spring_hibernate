@@ -5,10 +5,10 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.TypedQuery;
 import java.util.List;
-
 @Repository
 public class UserDaoImp implements UserDao {
 
@@ -37,8 +37,8 @@ public class UserDaoImp implements UserDao {
 
    @Override
    @SuppressWarnings("uncheked")
-   public List listUsers() {
-      TypedQuery<User> query = sessionFactory.getCurrentSession().createQuery("from User");
+   public List getUsersList() {
+      Query query = sessionFactory.getCurrentSession().createQuery("from User");
       return query.getResultList();
    }
 
