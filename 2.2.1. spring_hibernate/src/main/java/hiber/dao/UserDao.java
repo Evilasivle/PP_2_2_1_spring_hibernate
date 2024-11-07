@@ -5,10 +5,9 @@ import hiber.model.User;
 import java.util.List;
 
 public interface UserDao {
-   void add(User user);
+    void add(User user);
 
-   @SuppressWarnings("unchecked")
-   User getUserWithModelAndSeries(String model, int series);
+    User getUserWithModelAndSeries(String model, int series);
 
-   List<User> getUsersList();
+    List<User> getUsersList();
 }

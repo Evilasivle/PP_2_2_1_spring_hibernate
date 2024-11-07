@@ -1,10 +1,5 @@
 package hiber.model;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
-
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -25,7 +20,8 @@ public class Car {
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
-    public Car(){}
+    public Car() {
+    }
 
     public Car(int series, String model) {
         this.series = series;
